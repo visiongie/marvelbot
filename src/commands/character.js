@@ -35,6 +35,8 @@ class Character extends Command {
            .addField("Series", ch.series.available, true)
            .addField("Stories", ch.stories.available, true)
            .addField("Events", ch.events.available, true)
+           .setFooter(`ID: ${ch.id}`)
+           .setTimestamp()
         return message.util.send(embed)
        })
     }
