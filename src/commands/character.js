@@ -27,6 +27,7 @@ class Character extends Command {
            const embed = new MessageEmbed()
            .setTitle(ch.name)
            .setURL(ch.urls[1].url)
+           .setColor("#a11a1a")
            .setDescription(ch.description)
            .setImage(`${ch.thumbnail.path}.${ch.thumbnail.extension}`)
            .addField("Modified", moment(ch.modified).format("LL"))
