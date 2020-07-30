@@ -23,7 +23,7 @@ class Character extends Command {
        message.client.marvel.characters.name(args.character).get(function(err, res){
            if (err) return console.error(err)
            const ch = res[0];
-           console.log(ch.urls[ch.urls.findIndex(x => x.type === "comiclink")].url)
+           console.log(ch)
            const embed = new MessageEmbed()
            .setTitle(ch.name)
            .setDescription(ch.description)
