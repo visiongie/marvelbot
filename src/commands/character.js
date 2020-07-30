@@ -1,6 +1,6 @@
 const { Command } = require("discord-akairo")
 const { MessageEmbed } = require("discord.js")
-
+const moment = require("moment")
 class Character extends Command {
     constructor() {
         super("character", {
@@ -26,9 +26,14 @@ class Character extends Command {
            console.log(ch)
            const embed = new MessageEmbed()
            .setTitle(ch.name)
+           .setURL(ch.urls[1].url)
            .setDescription(ch.description)
            .setImage(`${ch.thumbnail.path}.${ch.thumbnail.extension}`)
-           .addField("Comics", `[${ch.comics.available}](${ch.urls[ch.urls.findIndex(x => x.type === "comiclink")].url})`)
+           .addField("Modified", moment(ch.modified).format("LL"))
+           .addField("Comics", `[${ch.comics.available}](${ch.urls[2].url})`, true)
+           .addField("Series", ch.series.available, true)
+           .addField("Stories", ch.stories.available, true)
+           .addField("Events", ch.events.available, true)
         return message.util.send(embed)
        })
     }
