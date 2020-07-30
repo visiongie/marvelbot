@@ -23,10 +23,12 @@ class Character extends Command {
        message.client.marvel.characters.name(args.character).get(function(err, res){
            if (err) return console.error(err)
            const ch = res[0];
+           console.log(ch.urls[ch.urls.findIndex(x => x.type === "comiclink")].url)
            const embed = new MessageEmbed()
            .setTitle(ch.name)
            .setDescription(ch.description)
-           .setThumbnail(`${ch.thumbnail.path}${ch.thumbnail.extension}`)
+           .setImage(`${ch.thumbnail.path}.${ch.thumbnail.extension}`)
+           .addField("Comics", `[${ch.comics.available}](${ch.urls[ch.urls.findIndex(x => x.type === "comiclink")].url})`)
         return message.util.send(embed)
        })
     }
